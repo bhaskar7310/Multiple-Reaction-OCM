@@ -1,0 +1,66 @@
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+python module derpar__user__routines 
+    interface derpar_user_interface 
+        subroutine func(n,x,f) ! in :arc_length:arc_length.f90:derpar:unknown_interface
+            integer, optional,intent(in),check((len(x)-1)>=n),depend(x) :: n=(len(x)-1)
+            double precision dimension(n + 1),intent(inout) :: x
+            double precision dimension(n + 1),depend(n), intent(out) :: f
+        end subroutine func
+        subroutine jac(n,x,g) ! in :arc_length:arc_length.f90:derpar:unknown_interface
+            integer, optional,intent(in),check((len(x)-1)>=n),depend(x) :: n=(len(x)-1)
+            double precision dimension(n + 1),intent(inout) :: x
+            double precision dimension(n,n + 1),depend(n,n), intent(out) :: g
+        end subroutine jac
+    end interface derpar_user_interface
+end python module derpar__user__routines
+python module arc_length ! in 
+    interface  ! in :arc_length
+        subroutine derpar(func,jac,n,x,xlow,xupp,eps,w,initial,itin,hh,hmax,pref,ndir,e,mxadms,ncorr,ncrad,nout,out,maxout) ! in :arc_length:arc_length.f90
+            use derpar__user__routines
+            external func
+            external jac
+            integer, optional,intent(in),check((len(x)-1)>=n),depend(x) :: n=(len(x)-1)
+            double precision dimension(n + 1),intent(inout) :: x
+            double precision intent(in) :: xlow
+            double precision intent(in) :: xupp
+            double precision intent(in) :: eps
+            double precision dimension(n + 1),intent(in),depend(n) :: w
+            integer intent(in) :: initial
+            integer intent(inout) :: itin
+            double precision intent(in) :: hh
+            double precision dimension(n + 1),intent(in),depend(n) :: hmax
+            double precision dimension(n + 1),intent(in),depend(n) :: pref
+            integer dimension(n + 1),intent(inout),depend(n) :: ndir
+            double precision intent(in) :: e
+            integer intent(in) :: mxadms
+            integer intent(in) :: ncorr
+            integer intent(in) :: ncrad
+            integer intent(out) :: nout
+            double precision dimension(maxout,n + 2),intent(out),depend(maxout,n) :: out
+            integer intent(inout) :: maxout
+        end subroutine derpar
+        subroutine adams(n,d,der,madms,h,x,mxadms) ! in :arc_length:arc_length.f90
+            integer, optional,intent(in),check((len(d)-1)>=n),depend(d) :: n=(len(d)-1)
+            double precision dimension(n + 1),intent(in) :: d
+            double precision dimension(mxadms,n + 1),intent(inout),depend(n) :: der
+            integer intent(inout) :: madms
+            double precision intent(in) :: h
+            double precision dimension(n + 1),intent(inout),depend(n) :: x
+            integer, optional,intent(in),check(shape(der,0)==mxadms),depend(der) :: mxadms=shape(der,0)
+        end subroutine adams
+        subroutine gause(n,a,b,m,pref,beta,k) ! in :arc_length:arc_length.f90
+            integer, optional,intent(in),check(shape(a,0)==n),depend(a) :: n=shape(a,0)
+            double precision dimension(n,n + 1),intent(inout) :: a
+            double precision dimension(n + 1),intent(inout),depend(n) :: b
+            integer intent(out) :: m
+            double precision dimension(n + 1),intent(in),depend(n) :: pref
+            double precision dimension(n + 1),intent(out),depend(n) :: beta
+            integer intent(out) :: k
+        end subroutine gause
+    end interface 
+end python module arc_length
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/

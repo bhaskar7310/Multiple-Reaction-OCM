@@ -1,0 +1,5 @@
+#### Reaction Kinetics of ODH_three_reaction model. All values are in SI units
+-rcat1PLf = 4e07 * exp(-87297/RT) * [CH4]**1 * [O2]**0.5
+-rcat1PLf = 0
+-rhomo2PLf = 1.15e10 * exp(-202495/RT) * [CH4]**0.2 * [O2]**1.3
+-rhomo2PLr = 0

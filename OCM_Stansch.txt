@@ -1,0 +1,10 @@
+#### __First Line__ This text file describes the global reactions of Oxidative Coupling of Methane
+CH4 + 2O2 -> CO2 + 2H2O
+2CH4 + 1/2O2 -> C2H6 + H2O
+CH4 + O2 -> CO + H2O + H2
+CO + 1/2O2 -> CO2
+C2H6 + 1/2O2 -> C2H4 + H2O
+C2H4 + 2O2 -> 2CO + 2H2O
+C2H6 -> C2H4 + H2
+C2H4 + 2H2O -> 2CO + 4H2
+CO2 + H2 <-> CO + H2O

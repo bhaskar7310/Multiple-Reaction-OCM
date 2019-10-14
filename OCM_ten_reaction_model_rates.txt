@@ -1,0 +1,21 @@
+#### Reaction Kinetics of OCM_ten_reaction, with model catalyst. All values are in SI units.
+-rcat1LNHWnum = 5e-04 * exp(-132400/RT) * [CH4]**1 * [O2]**0.4
+-rcat1LNHWden = (1 + 2.2e-05 * exp(49600/RT) * [O2]**0.4 + 0.83e-13 * exp(186000/RT) * [CO2]**1)**2
+-rcat2LNHWnum = 0.2e-05 * exp(-48000/RT) * [CH4]**0.24 * [O2]**0.76
+-rcat2LNHWden = (1 + 0.25e-12 * exp(175000/RT) * [CO2]**1)**2
+-rcat3LNHWnum = 0.52e-06 * exp(-68000/RT) * [CH4]**0.57 * [O2]**0.85
+-rcat3LNHWden = (1 + 0.36e-13 * exp(187000/RT) * [CO2]**1)**2
+-rcat4LNHWnum = 0.17 * exp(-157000/RT) * [C2H6]**0.95 * [O2]**0.37
+-rcat4LNHWden = (1 + 0.45e-12 * exp(166000/RT) * [CO2]**1)**2
+-rcat5LNHWnum = 0.06 * exp(-166000/RT) * [C2H4]**1 * [O2]**0.96
+-rcat5LNHWden = (1 + 0.16e-12 * exp(211000/RT) * [CO2]**1)**2
+-rhomo6PLf = 3.8e09 * exp(-217993/RT) * [CH4]**-0.3 * [O2]**1.3
+-rhomo6PLr = 0
+-rhomo7PLf = 1.9e9 * exp(-212007/RT) * [CO]**1 * [O2]**0.5
+-rhomo7PLr = 0
+-rhomo8PLf = 4.0e12 * exp(-272998/RT) * [C2H6]**1
+-rhomo8PLr = kr * exp(-Ear/RT) * [C2H4]**1 * [H2]**1
+-rhomo9PLf = 1.5e09 * exp(-200000/RT) * [CH4]**1 * [H2O]**1
+-rhomo9PLr = kr * exp(-Ear/RT) * [CO]**1 * [H2]**3
+-rhomo10PLf = 4.5e08 * exp(-248006/RT) * [CO2]**1 * [H2]**1
+-rhomo10PLr = kr * exp(-Ear/RT) * [CO]**1 * [H2O]**1
